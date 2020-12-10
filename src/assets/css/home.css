@@ -1,0 +1,43 @@
+.home .menu-list {
+  position: fixed;
+  width: 180px;
+  height: 100%;
+}
+.home .menu-list .ant-menu {
+  height: 100%;
+}
+.home .main-app {
+  margin-left: 180px;
+  transition: all 0.3s;
+}
+.home .main-app.menu-list-hide {
+  margin-left: 80px;
+}
+.home .main-app .main-header {
+  padding-left: 10px;
+  padding-right: 20px;
+  height: 50px;
+  line-height: 50px;
+  border-bottom: 1px solid #eee;
+}
+.home .main-app .main-header .breadcrumb {
+  display: inline-block;
+  margin-left: 20px;
+}
+.home .main-app .main-header .user-info {
+  float: right;
+  text-align: center;
+}
+.home .main-app .main-header .user-info li:not(:first-child) {
+  display: none;
+}
+.home .main-app .main-header .user-info:hover li {
+  display: block;
+}
+.home .main-app .main-header .user-info li {
+  padding: 0 20px;
+  cursor: pointer;
+}
+.home .main-app .main-header .user-info li:hover {
+  background-color: #eee;
+}
