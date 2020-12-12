@@ -10,6 +10,6 @@ instance.interceptors.response.use((response) => {
   if (response.data.status === 'fail') {
     return Promise.reject(response.data.msg);
   }
-  return response.data;
+  return response.data.data;
 });
 export default instance;

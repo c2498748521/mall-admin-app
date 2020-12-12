@@ -77,7 +77,7 @@ export default {
             password: this.loginForm.password,
           };
           axios.post('/passport/login', params).then((res) => {
-            console.log(res);
+            this.$store.dispatch('ActionUserInfo', res);
             this.$router.push('/');
           }, (err) => {
             this.$message.error(err);

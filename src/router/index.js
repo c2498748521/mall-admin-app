@@ -1,5 +1,6 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
+import store from '@/store';
 import Home from '../views/layout/Home.vue';
 import Login from '../views/layout/Login.vue';
 
@@ -28,6 +29,17 @@ const routes = [
 
 const router = new VueRouter({
   routes,
+});
+
+router.beforeEach((to, from, next) => {
+  const { appkey, email, username } = store.state.userInfo;
+  if (to.path !== '/login') {
+    if (appkey && email && username) { // 如果已经登录
+      return next();
+    }
+    return next('/login');
+  }
+  return next();
 });
 
 export default router;
