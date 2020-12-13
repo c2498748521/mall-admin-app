@@ -1,20 +1,23 @@
 <template>
   <div class="home">
     <left-menu />
-    <div :class="{ 'main-app': true, 'menu-list-hide': $store.state.collapsed }">
-      <slider-nav />
+    <div
+      :class="{ 'main-app': true, 'menu-list-hide': $store.state.collapsed }"
+    >
+      <slide-nav></slide-nav>
+      <router-view></router-view>
     </div>
   </div>
 </template>
 
 <script>
-import SliderNav from './components/SliderNav.vue';
 import LeftMenu from './components/LeftMenu.vue';
+import SlideNav from './components/SlideNav.vue';
 
 export default {
   components: {
     LeftMenu,
-    SliderNav,
+    SlideNav,
   },
 };
 </script>

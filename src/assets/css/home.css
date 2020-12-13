@@ -1,13 +1,13 @@
 .home .menu-list {
   position: fixed;
-  width: 180px;
+  width: 200px;
   height: 100%;
 }
 .home .menu-list .ant-menu {
   height: 100%;
 }
 .home .main-app {
-  margin-left: 180px;
+  margin-left: 200px;
   transition: all 0.3s;
 }
 .home .main-app.menu-list-hide {

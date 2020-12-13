@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 import { setUserInfo, getUserInfo, removeUserInfo } from '@/utils/user';
+import { filterHideMenu } from '@/utils/filterMenu';
 
 Vue.use(Vuex);
 
@@ -8,6 +9,7 @@ export default new Vuex.Store({
   state: {
     collapsed: false, // 是否隐藏左部导航，false为不隐藏，true为隐藏
     userInfo: getUserInfo(), // 存放登录用户的信息
+    routerMenu: [],
   },
   mutations: {
     toggleCollapsed(state) {
@@ -20,6 +22,9 @@ export default new Vuex.Store({
     loginOut(state) {
       state.userInfo = getUserInfo();
     },
+    toggleRouterMenu(state, menu) {
+      state.routerMenu = filterHideMenu(menu);
+    },
   },
   actions: {
     ActionCollapsed({ commit }) {
@@ -31,6 +36,9 @@ export default new Vuex.Store({
     ActionLoginOut({ commit }) { // 退出登录
       removeUserInfo();
       commit('loginOut');
+    },
+    ActionRouterMenu({ commit }, menu) {
+      commit('toggleRouterMenu', menu);
     },
   },
   modules: {
