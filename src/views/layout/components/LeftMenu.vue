@@ -1,8 +1,8 @@
 <template>
   <div class="menu-list">
     <a-menu
-      :default-selected-keys="[$store.state.routerMenu[0].children[0].name]"
-      :default-open-keys="[$store.state.routerMenu[0].name]"
+      :default-selected-keys="[$router.currentRoute.name]"
+      :default-open-keys="[$router.currentRoute.matched[0].name]"
       mode="inline"
       theme="dark"
       :inline-collapsed="$store.state.collapsed"

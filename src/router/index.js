@@ -13,7 +13,7 @@ const routerMenu = [
     name: 'Goods',
     meta: {
       title: '商品',
-      icon: 'shopping',
+      icon: 'inbox',
       show: true,
     },
     component: Home,
@@ -55,6 +55,7 @@ const routerMenu = [
         component: () => import('@/views/pages/Category.vue'),
         meta: {
           title: '商品类目',
+          icon: 'project',
           show: true,
 
         },
@@ -110,10 +111,11 @@ router.beforeEach((to, from, next) => {
     if (appkey && email && username) { // 如果已经登录
       if (!isAddRoutes) {
         const res = filterMenu(store.state.userInfo.role, routerMenu);
-        router.addRoutes(res);
-        store.dispatch('ActionRouterMenu', [...routes, ...res]);
+        store.dispatch('ActionRouterMenu', [...routes, ...res]).then(() => {
+          router.addRoutes(res);
+          next();
+        });
         isAddRoutes = true;
-        window.router = router;
       }
       return next();
     }
