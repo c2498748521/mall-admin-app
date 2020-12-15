@@ -14,6 +14,7 @@
   margin-left: 80px;
 }
 .home .main-app .main-header {
+  position: relative;
   padding-left: 10px;
   padding-right: 20px;
   height: 50px;
@@ -25,8 +26,11 @@
   margin-left: 20px;
 }
 .home .main-app .main-header .user-info {
-  float: right;
+  position: absolute;
+  top: 0;
+  right: 0;
   text-align: center;
+  z-index: 99;
 }
 .home .main-app .main-header .user-info li:not(:first-child) {
   display: none;
@@ -36,6 +40,7 @@
 }
 .home .main-app .main-header .user-info li {
   padding: 0 20px;
+  background-color: #fff;
   cursor: pointer;
 }
 .home .main-app .main-header .user-info li:hover {

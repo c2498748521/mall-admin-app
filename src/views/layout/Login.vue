@@ -30,7 +30,7 @@
   </div>
 </template>
 <script>
-import axios from '@/axios';
+import api from '@/api/login';
 
 export default {
   data() {
@@ -76,7 +76,7 @@ export default {
             email: this.loginForm.email,
             password: this.loginForm.password,
           };
-          axios.post('/passport/login', params).then((res) => {
+          api.login(params).then((res) => {
             this.$store.dispatch('ActionUserInfo', res);
             this.$router.push('/');
           }, (err) => {

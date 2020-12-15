@@ -16,6 +16,7 @@
       margin-left: 80px;
     }
     .main-header {
+      position: relative;
       padding-left: 10px;
       padding-right: 20px;
       height: 50px;
@@ -27,8 +28,11 @@
         margin-left: 20px;
       }
       .user-info {
-        float: right;
+        position: absolute;
+        top: 0;
+        right: 0;
         text-align: center;
+        z-index: 99;
         li:not(:first-child) {
           display: none;
         }
@@ -39,6 +43,7 @@
         }
         li {
           padding: 0 20px;
+          background-color: #fff;
           cursor: pointer;
 
           &:hover {
