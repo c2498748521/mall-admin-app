@@ -1,8 +1,8 @@
 <template>
   <a-table :columns="columns" :data-source="data" :pagination="pagination">
-    <div slot="name">
-      <a-button>编辑</a-button>
-      <a-button>删除</a-button>
+    <div slot="name" slot-scope="text, record">
+      <a-button @click="handleEdit(record)">编辑</a-button>
+      <a-button @click="handleRemove(record)">删除</a-button>
     </div>
   </a-table>
 </template>
@@ -73,6 +73,14 @@ export default {
     return {
       columns,
     };
+  },
+  methods: {
+    handleEdit(record) {
+      this.$emit('edit', record);
+    },
+    handleRemove(record) {
+      this.$emit('remove', record);
+    },
   },
 };
 </script>

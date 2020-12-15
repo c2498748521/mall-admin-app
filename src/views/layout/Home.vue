@@ -1,10 +1,10 @@
 <template>
   <div class="home">
-    <left-menu />
+    <left-menu :key="key" />
     <div
       :class="{ 'main-app': true, 'menu-list-hide': $store.state.collapsed }"
     >
-      <slide-nav></slide-nav>
+      <slide-nav :key="key" />
       <router-view></router-view>
     </div>
   </div>
@@ -15,9 +15,19 @@ import LeftMenu from './components/LeftMenu.vue';
 import SlideNav from './components/SlideNav.vue';
 
 export default {
+  data() {
+    return {
+      key: Date.now(),
+    };
+  },
   components: {
     LeftMenu,
     SlideNav,
+  },
+  watch: {
+    $route() {
+      this.key = Date.now();
+    },
   },
 };
 </script>

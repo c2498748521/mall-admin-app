@@ -34,7 +34,7 @@
       <a-button type="primary" html-type="submit"> 搜索 </a-button>
     </a-form-model-item>
     <a-button class="toGoodsAdd">
-      <router-link to="/add">添加商品</router-link>
+      <router-link :to="{name:'Add'}">添加商品</router-link>
     </a-button>
   </a-form-model>
 </template>

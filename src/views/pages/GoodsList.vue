@@ -1,7 +1,12 @@
 <template>
   <div class="categorys">
     <Search :categorys="categorys" @submit="handleSubmit" />
-    <goods-table :data="listData" :pagination="pagination"></goods-table>
+    <goods-table
+      :data="listData"
+      :pagination="pagination"
+      @edit="handleEdit"
+      @remove="handleRemove"
+    ></goods-table>
   </div>
 </template>
 <script>
@@ -53,11 +58,37 @@ export default {
       listApi.listAll(params).then((res) => {
         this.pagination.total = res.total;
         this.listData = res.data;
-        res.data.map((i) => { // 将类目的值从number类型数字变成string类型的中文
+        res.data.map((i) => {
+          // 将类目的值从number类型数字变成string类型的中文
           const item = i;
           item.category = this.categorys[item.category - 1].name;
           return true;
         });
+      });
+    },
+    handleEdit(record) {
+      this.$router.push({
+        name: 'Edit',
+        params: {
+          id: record.id,
+        },
+      });
+    },
+    handleRemove(record) {
+      this.$confirm({
+        title: '确认删除',
+        content: () => <div style="color:red;">{`确认删除标题为:${record.title}的商品吗`}</div>,
+        onOk: () => {
+          listApi.remove(record.id).then((res) => {
+            if (res.data.ok) {
+              this.getListAllData();
+            }
+          });
+        },
+        onCancel() {
+          return false;
+        },
+        class: 'removeList',
       });
     },
   },

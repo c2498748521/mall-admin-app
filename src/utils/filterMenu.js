@@ -1,16 +1,16 @@
 const menuList = {
   coustomer: [
     { path: '/goods' },
-    { path: '/list' },
-    { path: '/add' },
-    { path: '/edit' },
+    { path: 'list' },
+    { path: 'add' },
+    { path: 'edit/:id' },
   ],
   admin: [
     { path: '/goods' },
-    { path: '/list' },
-    { path: '/add' },
-    { path: '/edit' },
-    { path: '/category' },
+    { path: 'list' },
+    { path: 'add' },
+    { path: 'edit/:id' },
+    { path: 'category' },
   ],
 };
 

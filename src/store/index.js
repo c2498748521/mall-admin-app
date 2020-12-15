@@ -23,7 +23,9 @@ export default new Vuex.Store({
       state.userInfo = getUserInfo();
     },
     toggleRouterMenu(state, menu) {
-      state.routerMenu = filterHideMenu(menu);
+      const str = JSON.stringify(menu); // 深度克隆，防止修改数据造成原数据也修改
+      const newMenu = JSON.parse(str);
+      state.routerMenu = filterHideMenu(newMenu);
     },
   },
   actions: {

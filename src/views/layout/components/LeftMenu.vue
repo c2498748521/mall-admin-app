@@ -1,8 +1,8 @@
 <template>
   <div class="menu-list">
     <a-menu
-      :default-selected-keys="[$router.currentRoute.name]"
-      :default-open-keys="[$router.currentRoute.matched[0].name]"
+      :default-selected-keys="[defaultSelectKey]"
+      :default-open-keys="[defaultOpenKey]"
       mode="inline"
       theme="dark"
       :inline-collapsed="$store.state.collapsed"
@@ -16,9 +16,27 @@
         <a-menu-item v-for="list in router.children" :key="list.name">
           <a-icon :type="list.meta.icon"></a-icon>
           {{ list.meta.title }}
-          <router-link :to="list.path"> </router-link>
+          <router-link :to="{ name: list.name }"> </router-link>
         </a-menu-item>
       </a-sub-menu>
     </a-menu>
   </div>
 </template>
+<script>
+export default {
+  computed: {
+    defaultSelectKey: {
+      get() {
+        return this.$router.currentRoute.matched[1]
+          ? this.$router.currentRoute.matched[1].name
+          : '';
+      },
+    },
+    defaultOpenKey: {
+      get() {
+        return this.$router.currentRoute.matched[0].name;
+      },
+    },
+  },
+};
+</script>

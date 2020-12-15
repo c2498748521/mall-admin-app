@@ -19,7 +19,7 @@ const routerMenu = [
     component: Home,
     children: [
       {
-        path: '/list',
+        path: 'list',
         name: 'List',
         component: () => import('@/views/pages/GoodsList.vue'),
         meta: {
@@ -29,7 +29,7 @@ const routerMenu = [
         },
       },
       {
-        path: '/add',
+        path: 'add',
         name: 'Add',
         component: () => import('@/views/pages/GoodsAdd.vue'),
         meta: {
@@ -40,7 +40,7 @@ const routerMenu = [
         },
       },
       {
-        path: '/edit',
+        path: 'edit/:id',
         name: 'Edit',
         component: () => import('@/views/pages/GoodsEdit.vue'),
         meta: {
@@ -50,7 +50,7 @@ const routerMenu = [
         },
       },
       {
-        path: '/category',
+        path: 'category',
         name: 'Category',
         component: () => import('@/views/pages/Category.vue'),
         meta: {
