@@ -13,7 +13,7 @@
 import Search from '@/components/Search.vue';
 import GoodsTable from '@/components/GoodsTable.vue';
 import categoryApi from '@/api/categorys';
-import listApi from '@/api/list';
+import listApi from '@/api/goods';
 
 export default {
   components: {
@@ -67,10 +67,16 @@ export default {
       });
     },
     handleEdit(record) {
+      const form = record;
+      this.categorys.forEach((item) => {
+        if (item.name === record.category) {
+          form.category = item.id;
+        }
+      });
       this.$router.push({
         name: 'Edit',
         params: {
-          id: record.id,
+          ...form,
         },
       });
     },

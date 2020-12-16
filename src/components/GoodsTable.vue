@@ -1,5 +1,5 @@
 <template>
-  <a-table :columns="columns" :data-source="data" :pagination="pagination">
+  <a-table :columns="columns" :data-source="tableData" :pagination="pagination">
     <div slot="name" slot-scope="text, record">
       <a-button @click="handleEdit(record)">编辑</a-button>
       <a-button @click="handleRemove(record)">删除</a-button>
@@ -60,11 +60,12 @@ const columns = [
   },
   {
     title: '操作',
-    dataIndex: 'sale',
-    key: 'sale',
+    dataIndex: 'name',
+    key: 'name',
     width: 200,
     scopedSlots: { customRender: 'name' },
   },
+
 ];
 
 export default {
@@ -73,6 +74,14 @@ export default {
     return {
       columns,
     };
+  },
+  computed: {
+    tableData() { // 一定要有一个唯一的key值
+      return this.data.map((item) => ({
+        ...item,
+        key: item.id,
+      }));
+    },
   },
   methods: {
     handleEdit(record) {
